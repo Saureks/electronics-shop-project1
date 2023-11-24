@@ -33,3 +33,4 @@ class Item:
         """
         self.price = self.price * self.pay_rate
         pass
+
