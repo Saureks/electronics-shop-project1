@@ -8,7 +8,16 @@ packages = [{include = "electronics_shop_project"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+requests = "^2.31.0"
 
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^6.1.0"
+blask = "^0.2.3"
+isort = "^5.12.0"
+mypy = "^1.7.0"
+pytest = "^7.4.3"
+pytest-cov = "^4.1.0"
 
 [build-system]
 requires = ["poetry-core"]
