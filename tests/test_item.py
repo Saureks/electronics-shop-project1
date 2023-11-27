@@ -1,20 +1,48 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
-import pytest
-
+import unittest
 from src.item import Item
 
 
-@pytest.fixture
-def item1():
-    """Создаем экземпляр класса в фикстуре"""
-    return Item("Смартфон", 10000, 20)
+class TestItem(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        Item.instantiate_from_csv()
+
+    def setUp(self):
+        Item.all = []
+
+    def test_set_name(self):
+        item = Item('Smartphone', 1000, 5)
+        self.assertEqual(item.name, 'Smartphone')
+
+        item.name = 'SuperSmart'
+        self.assertEqual(item.name, 'SuperSmart')
+
+    def test_calculate_total_price(self):
+        item = Item('Smartphone', 1000, 5)
+        self.assertEqual(item.calculate_total_price(), 5000)
+
+    def test_string_to_number(self):
+        number_string = '10.5'
+        number = Item.string_to_number(number_string)
+        self.assertEqual(number, 10.5)
+
+    def test_instantiate_from_csv(self):
+        Item.instantiate_from_csv()
+        self.assertEqual(len(Item.all), 10)
+        for item in Item.all:
+            self.assertIsInstance(item, Item)
+            self.assertIsInstance(item.price, float)
+            self.assertIsInstance(item.quantity, int)
+
+    def test_repr(self):
+        item = Item('Smartphone', 1000, 5)
+        self.assertEqual(repr(item), "Item('Smartphone', 1000, 5)")
+
+    def test_str(self):
+        item = Item('Smartphone', 1000, 5)
+        self.assertEqual(str(item), 'Smartphone')
 
 
-def test_apply_discount(item1):
-    Item.pay_rate = 0.8
-    item1.apply_discount()
-    assert item1.price == 8000.0
-
-
-def test_calculate_total_price(item1):
-    assert item1.calculate_total_price() == 200000
+if __name__ == '__main__':
+    unittest.main()
