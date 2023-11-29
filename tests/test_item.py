@@ -1,5 +1,6 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
 import unittest
+
 from src.item import Item
 
 
@@ -29,7 +30,7 @@ class TestItem(unittest.TestCase):
 
     def test_instantiate_from_csv(self):
         Item.instantiate_from_csv()
-        self.assertEqual(len(Item.all), 10)
+        self.assertEqual(len(Item.all), 5)
         for item in Item.all:
             self.assertIsInstance(item, Item)
             self.assertIsInstance(item.price, float)

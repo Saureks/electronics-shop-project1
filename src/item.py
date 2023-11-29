@@ -49,22 +49,21 @@ class Item:
         Применяет установленную скидку для конкретного товара.
         """
         self.price = self.price * self.pay_rate
-        pass
 
     @classmethod
-    def instantiate_from_csv(cls):
+    def instantiate_from_csv(cls, self):
         file_path = os.path.join(os.path.dirname(__file__), '../src/items.csv')
         """
         Инициализирует экземпляры класса Item данными из файла src/items.csv.
         """
+        cls.all.clear()
         with open(file_path, 'r') as file:
             reader = csv.DictReader(file)
             for row in reader:
-                __name = row['name'][:10]
+                name = row['name'][:10]
                 price = float(row['price'])
-                quantity = int(row['quantity'])
-                item = cls(__name, price, quantity)
-                cls.all.append(item)
+                quantity = self.string_to_number(row['quantity'])
+                cls(name, price, quantity)
 
     @staticmethod
     def string_to_number(string):
@@ -74,7 +73,7 @@ class Item:
         :param string: Число в виде строки.
         :return: Число.
         """
-        return float(string)
+        return int(float(string))
 
     def __repr__(self):
         """
