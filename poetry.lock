@@ -173,6 +173,19 @@ files = [
 ]
 
 [[package]]
+name = "constant"
+version = "0.0.4"
+description = "Use IDLE autocomplete feature to manage large amount of constants."
+optional = false
+python-versions = "*"
+files = [
+    {file = "constant-0.0.4.zip", hash = "sha256:be9b89b553e2cd9440598442a23bf2c538f5d0d852ce17be5494b01d351f1a0b"},
+]
+
+[package.dependencies]
+jinja2 = "*"
+
+[[package]]
 name = "coverage"
 version = "7.3.2"
 description = "Code coverage measurement for Python"
@@ -662,4 +675,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "f90afd62ad8bae39315d36b479a3f682ee2521e41dcb06d1a7cfe6b9f03c3c18"
+content-hash = "8724633e8486fd9bae5ef7788605db44a6d4a1f7e9ce84ab33062274fd331419"

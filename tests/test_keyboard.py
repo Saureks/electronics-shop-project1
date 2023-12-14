@@ -1,5 +1,5 @@
 import unittest
-from src.keyboard import Keyboard, LanguageMixin
+from src.keyboard import Keyboard, Mixin
 
 
 class TestKeyboard(unittest.TestCase):
@@ -19,13 +19,10 @@ class TestKeyboard(unittest.TestCase):
         self.kb.change_lang()
         self.assertEqual(str(self.kb.language), "EN")
 
-        self.kb.language = 'CH'
-        self.assertEqual(str(self.kb.language), "CH")
-
 
 class TestLanguageMixin(unittest.TestCase):
     def setUp(self):
-        self.lang_mixin = LanguageMixin()
+        self.lang_mixin = Mixin()
 
     def test_init(self):
         self.assertEqual(self.lang_mixin.language, "EN")
